@@ -12,6 +12,8 @@ int main()
 	float dg;
 	float bw = 50;
 	float b = 90;
+	float cw = 25;
+	float c = 82;
 	printf("How many grade categories do you have?\n");
 	fgets(input, 256, stdin);
 	sscanf(input, "%f", &cat);
@@ -33,7 +35,8 @@ int main()
 	printf("What is your desired overall grade in the class?\n");
 	fgets(input, 256, stdin);
 	sscanf(input, "%f", &dg);
-//	if ( cat == 2 )
+	if ( cat == 2 )
+	{
 		float NesPercCat2()
 		{
 			return((dg-(bw*b*.01))/aw)*100;
@@ -52,4 +55,25 @@ int main()
 		}
 		float g = NesGradeCat2();
 		printf("You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg);
+	}
+	if ( cat == 3 )
+	{	float NesPercCat3()
+		{
+			return((dg-(bw*b*.01)-(cw*c*.01))/aw)*100;
+		}
+		float a = NesPercCat3();
+		printf("To get a %f percent in the class you need end with a %f percent overall in this category\n", dg, a);
+		float NesPointCat3()
+		{
+			return(.01*a*tp + .01*a*fk - pg);
+		}
+		float x = NesPointCat3();
+		printf("You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg);
+		float NesGradeCat3()
+		{
+			return(100*(x/fk));
+		}
+		float g = NesGradeCat3();
+		printf("You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg);
+	}
 }
