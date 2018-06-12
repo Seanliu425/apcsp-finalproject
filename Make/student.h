@@ -1,1 +1,1 @@
-void studentmain();
+int studentmain(void);

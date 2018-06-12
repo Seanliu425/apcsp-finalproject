@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <string.h>
-#include "student.h"
+#include <stdlib.h>
 struct Grades {
 	char  categories[50];
 	int weight;
 	int grade;
 };
-void studentmain()
+int studentmain(void)
 {
+  FILE *f = fopen("output.txt", "w");
+  if (f == NULL)
+  {
+    printf("Error opening file!\n");
+    exit(1);
+  }
+  const char *text = "PROGRAM OUTPUT";
+  fprintf(f, "%s\n", text);
   char input[256] ;
   char  categories[256];
   int weight;
@@ -69,6 +77,8 @@ for ( int i = 0; i < num; i++)
  }
 
  printf("Your current grade is equal to %f\n", finalgrade / 100);
+//text = "Your current grade is equal to %f\n", finalgrade / 100; 
+ fprintf(f,"%s\n", text);
  if (num == 3)
  {
  printf("Which category would you like to learn more about? Choose one of the following(Case sensitive): %s %s %s\n", gradeArr[0].categories, gradeArr[1].categories, gradeArr[2].categories);
@@ -229,18 +239,24 @@ for ( int i = 0; i < num; i++)
 		}
 		float a = NesPercCat2();
 		printf("To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a);
+//		text = "To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a;
+		fprintf(f,"To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a);
 		float NesPointCat2()
 		{
 			return(.01*a*tp + .01*a*fk - pg);
 		}
 		float x = NesPointCat2();
 		printf("You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg);
+//		text = "You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg;
+		fprintf(f,"%s\n", text);
 		float NesGradeCat2()
 		{
 			return(100*(x/fk));
 		}
 		float g = NesGradeCat2();
 		printf("You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg);
+//		text =  "You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg;
+		fprintf(f,"%s\n", text);
 	}
 	if ( num == 3 )
 		{
@@ -250,18 +266,24 @@ for ( int i = 0; i < num; i++)
 		}
 		float a = NesPercCat3();
 		printf("To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a);
+//		text = "To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a;
+		fprintf(f,"%s\n", text);
 		float NesPointCat3()
 		{
 			return(.01*a*tp + .01*a*fk - pg);
 		}
 		float x = NesPointCat3();
 		printf("You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg);
+//		text = "You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg;
+		fprintf(f,"%s\n", text);
 		float NesGradeCat3()
 		{
 			return(100*(x/fk));
 		}
 		float g = NesGradeCat3();
 		printf("You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg);
+//		text = "You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg;
+		fprintf(f,"%s\n", text);
 	}
 
 	if ( num == 4 )
@@ -272,17 +294,22 @@ for ( int i = 0; i < num; i++)
 		}
 		float a = NesPercCat4();
 		printf("To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a);
+//		text = "To get a %f percent in the class you need to end with a %f percent overall in this category\n", dg, a;
 		float NesPointCat4()
 		{
 			return(.01*a*tp + .01*a*fk - pg);
 		}
 		float x = NesPointCat4();
 		printf("You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg);
+//		text = "You need to get %f points out of %f points on your last assignment to get a %f in the class\n", x, fk, dg;	
+		fprintf(f,"%s\n", text);
 		float NesGradeCat4()
 		{
 			return(100*(x/fk));
 		}
 		float g = NesGradeCat4();
 		printf("You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg);
+//		text = "You need a %f percent on your last assignment to get a %f percent in the class\n",g, dg;
+		fprintf(f,"%s\n", text);
 	}
 }
